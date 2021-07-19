@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ThymeLeaf Each</title>
+</head>
+<body>
+
+<ul>
+	<!-- 타임리프 반복문 ___ th:each = “변수: ${목록}” 	 -->
+	<li th:each="dto : ${list}">
+		[[${dto}]]
+	</li>
+
+</ul>
+
+</body>
+</html>
