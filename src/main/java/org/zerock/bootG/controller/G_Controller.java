@@ -97,6 +97,7 @@ public class G_Controller {
 										}).collect(Collectors.toList());
 		redirectAttributes.addFlashAttribute("alist",list);
 		md.addAttribute("list", list);
+		log.info(">>>>> Run ex04 Success Complete");
 //		for(G_DTO a : list) {
 //			System.out.println(a);
 //		}

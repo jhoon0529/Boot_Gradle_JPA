@@ -7,8 +7,10 @@ build/
 
 *.gradle
 *.bat
-resources/
+*.properties
+static/
 gradlew
+
 
 ### STS ###
 .apt_generated

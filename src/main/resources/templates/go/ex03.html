@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" >
+<!-- <html lang="ko" xmlns:th="http://www.thymeleaf.org"> -->
+<head>
+<meta charset="UTF-8">
+<title>ThymeLeaf Inline_redirect</title>
+</head>
+<body>
+		<a th:href="@{/go/ex01}">ex01</a><br>
+		<a th:href="@{/go/ex02}">ex02(List)</a><br>
+		<a th:href="@{/go/inline}">ex03(inline)</a><br>
+		<a th:href="@{/go/ex04}">ex04(Timeformat)</a><br>
+		
+	<!--th:text 안에 띄어쓰기 불가 -->
+	<h1 th:text="타임리프-스타트" ></h1>
+	<!-- ' ' 띄어쓰기가능, 없으면 불가 -->
+	<h1>[['Thymeleaf Start']] : [[Redirect]]</h1>
+	<hr>
+	<h2>[['Response 결과']]</h2><br>
+	<h4 th:text="'객체정보 : '+${dto}"></h4>
+	<h4 th:text="'결과 : '+${result}"></h4>
+	
+	<hr>
+	<h3>th:inline="javascript" 를 사용하면, Json 방식으로 처리된 것을 알 수 있다.
+	(확인: F12-> Script 확인)</h3>
+	<p>
+		script 결과 : [\[${}]] 형식___Json 형식 저장<br>
+		 var msg = "success";<br>
+		 var dto = {"sno":100,"first":"Inline...100","last":"Last...100","regtime":"2021-07-20T16:03:50.0643252"};
+	</p>
+	<p>
+		script 결과 :[\(${})] 형식<br>
+		 var msg = success;<br>
+		 var dto = G_DTO(sno=100, first=Inline...100, last=Last...100, regtime=2021-07-20T17:05:52.357776700);
+	</p>
+	
+	<script  th:inline="javascript">
+		 var msg = [[${result}]];
+		 var a = [[${dto}]];
+// 		 var msg = [(${result})];
+// 		 var dto = [(${dto})];
+	</script>
+	
+	
+
+</body>
+</html>
