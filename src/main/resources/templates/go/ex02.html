@@ -1,18 +1,87 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!-- <html lang="ko" xmlns:th="http://www.thymeleaf.org"> -->
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <title>ThymeLeaf Each</title>
 </head>
 <body>
-
+<style>
+	.red{
+		color: red;	
+	}
+</style>
+		<a th:href="@{/go/ex01}">ex01</a><br>
+		<a th:href="@{/go/ex02}">ex02(List)</a><br>
+		<a th:href="@{/go/inline}">ex03(inline)</a><br>
+		<a th:href="@{/go/ex04}">ex04(Timeformat)</a><br>
 <ul>
-	<!-- 타임리프 반복문 ___ th:each = “변수: ${목록}” 	 -->
-	<li th:each="dto : ${list}">
-		[[${dto}]]
+	<h1>Thymeleaf 함수 사용법  =>> th: (함수) =</h1>
+	1) ThymeLeaf 반복문 _ th:each = “변수: ${목록}”_ (Java 향상된 for문 동일)<br><br> 	
+	<li th:each="a : ${list}">
+		[[${a}]]
 	</li>
-
+	<hr>
+	2) ThymeLeaf 기본 지원 옵션 : Status  
+	<a href='https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#keeping-iteration-status' target="#">
+	(참조 Document 이동)</a><br><p></p>
+	
+	
+	<!-- Status 반복문 -->
+	<li th:each="dto, status1 : ${list}" 
+		 th:if="${dto.sno % 5 == 0}">
+	      ObJ정보 :  [[${status1.current}]],<br>
+	       >>인덱스 = [[${status1.index}]], 첫 여부 : [[${status1.first}]], 끝 여부 : [[${status1.last}]], count : [[${status1.count}]], 
+	       전체 size : [[${status1.size}]],  짝수여부 : [[${status1.even}]], 홀수여부 : [[${status1.odd}]]
+	       
+	</li>
+	<hr>
+	3) 조건문 if 와  Unless 사용 (th:if=" ", th:unless=" ")<br><br>
+	<li th:each="dto: ${list}" >
+        <span th:if="${dto.sno % 5 == 0}"
+					th:text="${'if, Ture-----------------sno:' +dto.sno}"></span>
+        <span th:unless="${dto.sno % 5 == 0}"
+        			th:text="${'unless='+dto.first+' and '+dto.last}"></span>
+	</li>
+	<hr>
+	4) 조건문 if _3항연산자 (th:text="조건? true : false")<br>
+	(*만약 (조건? true)를 사용하면 true 값만 출력된다. false는 공간만 확보<br><br>
+	<li th:each="dto: ${list}" th:if="${dto.sno<10}">
+        <span th:text="${dto.sno % 3 == 0}? 'true : sno='+${dto.sno} : 'false : '+${dto.first}"></span>
+	</li>
+	<hr>
+	4-1) 만약 (조건? true)를 사용하면 true 값만 출력된다. false는 공간만 확보<br>
+	style 태그는 (th:class="클래스명") 를 사용<br><br>
+	<li th:each="dto: ${list}" th:if="${dto.sno<6}">
+        <span th:class="${dto.sno % 2 == 0}? 'red' ">[[${dto}]]</span>
+	</li>
+	<hr>
+	5) 기존 html 태그가 없어도 바로 th:명령어를 통해 사용이 가능하다.<br>
+		th:태그는 F12에서 확인이 안된다.<br><br>
+		<th:block th:each="b: ${list}">
+		<li th:text="${b.sno % 5 ==0}?'-------true : '+ ${b.sno}:${b.first}"></li>
+		</th:block>
+	<hr>
+	6) 링크 처리를 위한 매개변수 경로 @{경로(매개변수=${  })}<br>
+	링크 :: /go/ex02?sno=1  <br><br>
+	<li th:each="c:${list}" th:if="${c.sno % 5==0}">
+		<a th:href="@{ex02(sno=${c.sno})}">/ex02? sno = [[${c.sno}]]</a>
+		<a th:href="@{'ex02'(sno=${c.sno})}">/ex02? sno = [[${c.sno}]]</a>
+		<!-- /ex02 라고 적으면 앞에 경로 /go가 생략된다. -->
+	</li>
+	<hr>
+	6-1) 링크 처리를 위한 추가 경로 설정 @{경로{매개변수}(매개변수=${  })}<br>
+	링크 :: /go/ex02/5?sno=1 <br><br>
+	<li th:each="c:${list}" th:if="${c.sno % 5==0}">
+		<a th:href="@{'/go/ex02/'+${c.sno}(sno=${c.sno})}">/ex02/ [[${c.sno}]] ? sno = [[${c.sno}]]</a>
+		<a th:href="@{ex02/{sno}(sno=${c.sno})}">/ex02/ [[${c.sno}]]</a>
+		<!-- {속성}만 사용시 매개변수를 사용할 수 없다. -->
+	</li>
+	<hr>
+	
 </ul>
+
+
 
 </body>
 </html>
