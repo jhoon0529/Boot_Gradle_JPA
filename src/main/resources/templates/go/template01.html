@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ko">
+<th:block th:replace="~{/layout/layout_1 :: setContent(~{this::content})}">
+
+	<th:block th:fragment="content" >
+		<div style="color:white">
+			<h1>Layout Template Page</h1>
+			<h4>th:replace="~{/경로/문서명 :: frag명(<b> ~{this:: frag명} </b>)}"</h4>
+		</div>
+		<th:block th:insert="~{/fragments/include_Link :: goLink}"></th:block>
+	</th:block>
+</th:block>
+
+</html>

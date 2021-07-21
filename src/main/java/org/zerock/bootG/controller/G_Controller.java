@@ -103,5 +103,11 @@ public class G_Controller {
 //		}
 	}
 	
+	//Include 방식 , Parma 방식, LayOut Tamplate제작
+	@GetMapping({"/layout01","/layout02", "/template01", "/content"})
+	public void exLayout01() {
+		log.info(">>>>> Run fragment Success Complete");
+	}
+	
 	
 }

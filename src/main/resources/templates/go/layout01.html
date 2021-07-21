@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Thymelealf Layout(#1_Include)</title>
+</head>
+<body>
+<th:block th:insert="~{/fragments/include_Link :: goLink}"></th:block><hr>
+
+	<h1>Thmeleaf Fragment Test 1</h1>
+	<h4 style="color:red;">th:fragment 미사용. HTML문서 전체 불러오기</h4>
+	<div style="border: 2px solid lightblue; padding: 10px; text-align: center; ">
+		<th:block th:replace="~{/fragments/fragment02}"></th:block>
+	
+	</div>
+	
+	<!-- #2 -->
+	<h1>Thmeleaf Fragment Test 2</h1>
+	<h4 style="color:red;"> th:fragment="이름" 을 사용하면,<br>
+	th:replace="~{/경로/문서명 :: fragment이름}" 으로 호출할 수 있다.<br>
+	(th:insert 동일)</h4>
+	<hr>
+	<h4>Layout part 1 - 1 (th:replace = 해당 frag "내용만" 붙여넣음)</h4>
+		<div th:replace="~{/fragments/fragment01 :: part1}"></div>
+	
+	<h4>Layout part 1 - 2 (th:insert = frag "div"를 통째로 그 안에 붙여넣음)</h4>
+		<div th:insert="~{/fragments/fragment01 :: part2}"></div>
+	
+	<h4>Layout part 1 - 3 (th:block th:replace = th:block은 태그용. 실제없는 개념)</h4>
+		<th:block th:replace="~{/fragments/fragment01 :: part3}"></th:block>
+	<hr>
+	
+		
+</body>
+</html>

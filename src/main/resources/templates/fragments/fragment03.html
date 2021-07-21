@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Thymeleaf fragment</title>
+
+</head>
+<body>
+	<!-- fragment 선언 -->
+	<div th:fragment="target(first, second)">
+	
+		<style>
+			.c1{
+				background-color: lightgreen;
+			}
+			.c2{
+				background-color: orange;
+			}
+		</style>
+		
+		<!-- 파라메터를 받아서 적용함. -->
+		<div class="c1">
+			<th:block th:replace="${first}"></th:block>
+		</div>
+		<div class="c2">
+			<th:block th:replace="${second}"></th:block>
+		</div>
+	
+	</div>
+
+</body>
+</html>

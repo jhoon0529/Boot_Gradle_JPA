@@ -11,10 +11,8 @@
 		color: red;	
 	}
 </style>
-		<a th:href="@{/go/ex01}">ex01</a><br>
-		<a th:href="@{/go/ex02}">ex02(List)</a><br>
-		<a th:href="@{/go/inline}">ex03(inline)</a><br>
-		<a th:href="@{/go/ex04}">ex04(Timeformat)</a><br>
+<th:block th:replace="~{/fragments/include_Link :: goLink}"></th:block>
+
 <ul>
 	<h1>Thymeleaf 함수 사용법  =>> th: (함수) =</h1>
 	1) ThymeLeaf 반복문 _ th:each = “변수: ${목록}”_ (Java 향상된 for문 동일)<br><br> 	

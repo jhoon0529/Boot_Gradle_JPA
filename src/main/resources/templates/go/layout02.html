@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Thymelealf Layout(#2)</title>
+</head>
+<body>
+<th:block th:insert="~{/fragments/include_Link :: goLink}"></th:block><hr>
+<h1>Fragment Param 형식 Layout 적용하기</h1>
+<h4>해당 문서 fragment name =target(1,2) 에 fragment 문서 layout을 입힌다.</h4>
+<hr>
+<th:block th:replace="~{/fragments/fragment03 :: target(~{this :: #ulFirst}, ~{this :: #ulSecond} )}">
+
+	<ul id="ulFirst">
+		<li>커피</li>
+		<li>크림빵</li>
+	</ul>
+	<ul id="ulSecond">
+		<li>카페</li>
+		<li>서점</li>
+	</ul>
+</th:block>
+
+</body>
+</html>

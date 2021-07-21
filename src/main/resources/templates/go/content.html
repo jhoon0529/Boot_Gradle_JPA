@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<!-- layout 템플릿 불러오기 -->
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+
+	<!-- Content 작성부분 적용하기 -->
+	<th:block th:fragment="content">
+	
+		<h2>BootStrap CONTENT Page</h2>
+		<h4>fragment : Content</h4>
+	
+	</th:block>>
+
+</th:block>
+
+</html>
